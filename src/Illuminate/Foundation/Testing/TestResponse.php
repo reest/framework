@@ -82,6 +82,25 @@ class TestResponse
     }
 
     /**
+     * Assert that the response does not have the given status code.
+     *
+     * @param  int  $status
+     * @return $this
+     */
+    public function assertNotStatus($status)
+    {
+
+        $actual = $this->getStatusCode();
+
+        PHPUnit::assertTrue(
+            $actual !== $status,
+            "Not expecting status code {$status} but received {$actual}"
+        );
+
+        return $this;
+    }
+
+    /**
      * Assert whether the response is redirecting to a given URI.
      *
      * @param  string  $uri
